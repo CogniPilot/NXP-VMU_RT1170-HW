@@ -1,18 +1,8 @@
-# NXP-FMUMRT, MR-FMURT6, MR-VMU-RT117x
-This is an open reference design for a PX4 V5X flight controller. 
+# VMU RT117x
+## This is an open reference design for a CogniPilot [Cerebri Vehicle Management Unit](https://github.com/CogniPilot/cerebri).
 
-Note1: For MR-FMURT6 based on NXP i.MX RT1062: This design is NOT being produced in volume, and we will produce MR-VMU-RT1176 using i.MX RT1176 MCU instead.
-The RT1176 offers higher processing speed (Ghz) and additional UARTS as well as a dual core processor.
-MR-FMURT6 It is still a valuable reference point for cost-optimzed design usign i.MX RT1062
-Alternative software could also be used on this design such as Zephyr + Cognipilot.
+VMU-RT1170 is a "Vehicle Management Unit" based on the general [i.MX RT1170 family of processors](https://www.nxp.com/products/processors-and-microcontrollers/arm-microcontrollers/i-mx-rt-crossover-mcus/i-mx-rt1170-crossover-mcu-dual-core-arm-cortex-m7-and-cortex-m4-operating-up-to-1-ghz:i.MX-RT1170) and can be found in Zephyr boards as [vmu_rt1170](https://docs.zephyrproject.org/latest/boards/arm/vmu_rt1170/doc/index.html).
 
-Note2: MR-VMU-RT117x is being called a "VMU" or "Vehicle Management Unit" rather than "FMU" or "Flight Management Unit" since this is more inclusive 
-of the many types of vehicles that can use a real time controller. 
+- The i.MX RT1176 is currently constrained on VMU-RT1170 by the PAB connector standard. The [PAB standard](https://github.com/pixhawk/Pixhawk-Standards/blob/master/DS-010%20Pixhawk%20Autopilot%20Bus%20Standard.pdf) was already revised to allow for extra PWM from the i.MX RT1176 and allows potential elimination of the IO co-processor that is on the VxX carrier board. Additionally there is a 3rd CAN port available. *In the future look for a revised VxX7 carrier board which makes use of these new signals on the PAB.*
 
-Note3: The i.MX RT117x is currently contstrained on MR-VMU-RT117x by the Pixhawk Autopilot Bus (PAB) connector standard. 
-The PAB standard was already revised to allow for extra PWM from the RT1176 and allows potential elimination of the IO co-processor that is on 
-the VxX carrier board. Additionally there is a 3rd CAN port available.
-(July/2023) - In the future look for a revised VxX7 carrier board which makes use of these new signals on the PAB.
-
-Note4: Given the i.MX RT117x is currently contstrained on MR-VMU-RT117x, we will look in the future collaboration on a "chip down" design that takes advantage
-of all the extra IP an peripherals such as the camera and vision pipeline that are currently unused on this chip.
+- Given the i.MX RT1176 is currently constrained on the current VMU-RT1170, we will look into future collaboration on a "chip down" design that takes advantage of all the extra IP and peripherals such as the camera and vision pipeline that are currently unused on this chip. This is planned to go by the name VMU-RT1176 as it would not be interchangeable with other i.MX RT117x family chips.
